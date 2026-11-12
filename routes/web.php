@@ -12,3 +12,10 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
+// ---------- Halaman SEMENTARA M1 (diganti pada M4.2 dan M7.4) ----------
+Route::get('/', fn () => view('placeholder', ['title' => 'Katalog (sementara)']))->name('shop.index');
+
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/', fn () => view('placeholder', ['title' => 'Dashboard Admin (sementara)']))->name('dashboard');
+});;
